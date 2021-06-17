@@ -3,7 +3,6 @@
 
 # Updated:
 #  1. 使用async来update lastname，更加稳定
-#  2. 增加emoji clock，让时间显示更加有趣味
 
 import time
 import os
@@ -14,13 +13,7 @@ import random
 from time import strftime
 from telethon import TelegramClient
 from telethon.tl.functions.account import UpdateProfileRequest
-from emoji import emojize
 
-
-dizzy = emojize(":dizzy:", use_aliases=True)
-cake = emojize(":cake:", use_aliases=True)
-all_time_emoji_name = ["clock12", "clock1230", "clock1", "clock130", "clock2", "clock230", "clock3", "clock330", "clock4", "clock430", "clock5", "clock530", "clock6", "clock630", "clock7", "clock730", "clock8", "clock830", "clock9", "clock930", "clock10", "clock1030", "clock11", "clock1130"]
-time_emoji_symb = [emojize(":%s:" %s, use_aliases=True) for s in all_time_emoji_name]
 
 api_auth_file = 'api_auth'
 if not os.path.exists(api_auth_file+'.session'):
@@ -38,8 +31,6 @@ logger = logging.getLogger(__name__)
 
 async def change_name_auto():
     # Set time zone to UTC+8
-    # ln -sf /usr/share/zoneinfo/Asia/Chongqing /etc/localtime
-    # https://stackoverflow.com/questions/4788533/python-strftime-gmtime-not-respecting-timezone
 
     print('will change name')
 
