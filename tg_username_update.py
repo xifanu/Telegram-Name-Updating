@@ -47,29 +47,10 @@ async def change_name_auto():
         try:
             time_cur = strftime("%H:%M:%S:%p:%a", time.localtime())
             hour, minu, seco, p, abbwn = time_cur.split(':')
-            if seco=='00' or seco=='30':
-                shift = 0
-                mult = 1
-                if int(minu)>30: shift=1
-                # print((int(hour)%12)*2+shift)
-                # hour symbols
-#                 hsym = time_emoji_symb[(int(hour)%12)*2+shift]
-                # await client1.send_message('me', hsym)
-#                 for_fun = random.random() 
-#                 if for_fun < 0.10:
-#                     last_name = '%s时%s分 %s' % (hour, minu, hsym)
-#                 elif for_fun < 0.30:
-#                     last_name = '%s:%s %s %s %s' % (hour, minu, p, abbwn, hsym)
-#                 elif for_fun < 0.60:
-#                     last_name = '%s:%s %s UTC+8 %s' % (hour, minu, p, hsym)
-#                 elif for_fun < 0.90:
-#                     last_name = '%s' % dizzy
-#                 else:
-#                     last_name = '%s' % cake
-                last_name = '%s:%s UTC+8' % (hour, minu)
-        
-                await client1(UpdateProfileRequest(last_name=last_name))
-                logger.info('Updated -> %s' % last_name)
+            last_name = '%s:%s UTC+8' % (hour, minu)
+
+            await client1(UpdateProfileRequest(last_name=last_name))
+            logger.info('Updated -> %s' % last_name)
         
         except KeyboardInterrupt:
             print('\nwill reset last name\n')
@@ -79,7 +60,7 @@ async def change_name_auto():
         except Exception as e:
             print('%s: %s' % (type(e), e))
 
-        await asyncio.sleep(1)
+        await asyncio.sleep(60)
 
 
 # main function
